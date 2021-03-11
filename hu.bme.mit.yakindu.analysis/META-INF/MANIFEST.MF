@@ -12,4 +12,5 @@ Require-Bundle: hu.bme.mit.model2gml,
  org.eclipse.gmf.runtime.notation,
  org.yakindu.sct.domain.generic;bundle-version="2.9.2",
  org.apache.log4j;bundle-version="1.2.15",
- org.eclipse.emf.transaction;bundle-version="1.9.1"
+ org.eclipse.emf.transaction;bundle-version="1.9.1",
+ org.eclipse.emf.common

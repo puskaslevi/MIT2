@@ -48,3 +48,9 @@ Binding(CTRL+D,
 
 !ENTRY unknown 4 0 2021-03-11 16:07:01.855
 !MESSAGE Execution of 'dbus-send --print-reply --dest=org.freedesktop.FileManager1 /org/freedesktop/FileManager1 org.freedesktop.FileManager1.ShowItems array:string:"file:/home/cloud/Documents/REMO_WS/hu.bme.mit.model2gml/src/hu/bme/mit/model2gml/Model2GML.xtend" string:""' failed with return code: 1
+
+!ENTRY org.yakindu.sct.builder.SCTBuilder 2 0 2021-03-11 19:36:38.158
+!MESSAGE Cannot generate Code for Statechart /hu.bme.mit.yakindu.analysis/model_input/example.sct. The file contains errors.
+
+!ENTRY org.yakindu.sct.builder.SCTBuilder 2 0 2021-03-11 19:37:27.725
+!MESSAGE Cannot generate Code for Statechart /hu.bme.mit.yakindu.analysis/model_input/example.sct. The file contains errors.
