@@ -23,10 +23,10 @@ public class RunStatechart {
 		Scanner scanner = new Scanner(System.in);
 		while(true) {
 			switch(scanner.nextLine()) {
-				case "white": s.raiseWhite(); break;
-				case "black": s.raiseBlack(); break;
-				case "start": s.raiseStart(); break;
-				case "exit": System.exit(0); break;
+				case "white": s.raiseWhite();
+				case "black": s.raiseBlack();
+				case "start": s.raiseStart();
+				case "exit": System.exit(0);
 			}
 			s.runCycle();
 			print(s);
