@@ -1,0 +1,5 @@
+package hu.bme.mit.yakindu.analysis.workhere;
+
+public class CodeGenerator {
+
+}

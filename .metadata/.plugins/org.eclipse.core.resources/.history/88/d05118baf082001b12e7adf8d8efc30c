@@ -1,0 +1,57 @@
+package hu.bme.mit.yakindu.analysis.workhere;
+
+public class CodeGenerator {
+	import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
+
+	import hu.bme.mit.yakindu.analysis.RuntimeService;
+	import hu.bme.mit.yakindu.analysis.TimerService;
+	import hu.bme.mit.yakindu.analysis.example.ExampleStatemachine;
+	import hu.bme.mit.yakindu.analysis.example.IExampleStatemachine;
+
+		
+		public static void main(String[] args) throws IOException {
+			ExampleStatemachine s = new ExampleStatemachine();
+			s.setTimer(new TimerService());
+			RuntimeService.getInstance().registerStatemachine(s, 200);
+			s.init();
+			s.enter();
+			s.runCycle();
+			
+			Scanner scanner = new Scanner(System.in);
+			while(true) {
+				switch(scanner.nextLine()) {
+					case "white": s.raiseWhite(); break;
+					case "black": s.raiseBlack(); break;
+					case "start": s.raiseStart(); break;
+					case "exit": System.exit(0); break;
+				}
+				s.runCycle();
+				print(s);
+			}
+		}
+
+		public static void print(IExampleStatemachine s) {
+			System.out.println("W = " + s.getSCInterface().getWhiteTime());
+			System.out.println("B = " + s.getSCInterface().getBlackTime());
+		}
+	
+	public static void generateCode(List<String> events) {
+		System.out.println("package hu.bme.mit.yakindu.analysis.workhere;");
+		System.out.println("import java.io.IOException;\nimport java.util.Scanner;\nimport hu.bme.mit.yakindu.analysis.RuntimeService;");
+		System.out.println("import hu.bme.mit.yakindu.analysis.TimerService;\nimport hu.bme.mit.yakindu.analysis.example.ExampleStatemachine;\nimport hu.bme.mit.yakindu.analysis.example.IExampleStatemachine;");
+		System.out.println("public class RunStatechart {\n");
+		System.out.println("\tpublic static void main(String[] args) throws IOException {");
+		System.out.println("\t\t\tExampleStatemachine s = new ExampleStatemachine();\n\t\t\ts.setTimer(new TimerService());\n\t\t\tRuntimeService.getInstance().registerStatemachine(s, 200);");
+		System.out.println("\t\t\ts.init();\n\t\t\ts.enter();\n\t\t\ts.runCycle();\n");
+		System.out.println("\t\t\tScanner scanner = new Scanner(System.in);");
+		System.out.println("\t\t\twhile(true) {\n\t\t\t\tswitch(scanner.nextLine()) {");
+		for (int i = 0; i < events.size(); i++) {
+			System.out.println("\t\t\t\t\tcase " + "\"" + events.get(i) + "\": s.raise" + events.get(i).substring(0, 1).toUpperCase() + events.get(i).substring(1) + "(); break;");
+		}
+		System.out.println("\t\t\t\ts.runCycle();\n\t\t\t\tprint(s);\n\t\t\t}\n\t\t");
+
+	}
+	
+}
